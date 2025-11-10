@@ -1,4 +1,4 @@
-import { LottoResult } from '../domain/lotto-result.entity';
+import { LottoResult } from '../domain/lotto-result.domain';
 
 export class EarningRateCalculator {
   public static readonly LOTTO_PRICE = 1000;

@@ -1,4 +1,4 @@
-import { Lotto } from './lotto.entity';
+import { Lotto } from './lotto.domain';
 
 export class LottoTicket {
   private readonly lottoList: Lotto[];

@@ -7,4 +7,3 @@ import { LottoService } from './lotto.service';
   providers: [LottoService],
 })
 export class LottoModule {}
-

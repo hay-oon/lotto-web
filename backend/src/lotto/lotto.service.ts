@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { LottoTicket } from './domain/lotto-ticket.entity';
-import { WinningNumber } from './domain/winning-number.entity';
-import { LottoResult } from './domain/lotto-result.entity';
+import { LottoTicket } from './domain/lotto-ticket.domain';
+import { WinningNumber } from './domain/winning-number.domain';
+import { LottoResult } from './domain/lotto-result.domain';
 import { EarningRateCalculator } from './util/earning-rate-calculator';
 
 @Injectable()
@@ -27,4 +27,3 @@ export class LottoService {
     return { result, earningRate, purchaseNumber };
   }
 }
-

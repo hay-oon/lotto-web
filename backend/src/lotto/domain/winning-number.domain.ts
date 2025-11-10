@@ -56,9 +56,7 @@ export class WinningNumber {
     bonusNumber: number,
   ): void {
     if (winningNumbers.includes(bonusNumber)) {
-      throw new Error(
-        '[ERROR] 보너스 번호는 당첨번호와 중복될 수 없습니다.',
-      );
+      throw new Error('[ERROR] 보너스 번호는 당첨번호와 중복될 수 없습니다.');
     }
   }
 

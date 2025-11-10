@@ -15,8 +15,8 @@ import {
   RankCountDto,
 } from './dto/lotto-response.dto';
 import { Rank, RankHelper } from './domain/rank.enum';
-import { LottoTicket } from './domain/lotto-ticket.entity';
-import { Lotto } from './domain/lotto.entity';
+import { LottoTicket } from './domain/lotto-ticket.domain';
+import { Lotto } from './domain/lotto.domain';
 
 @Controller('lotto')
 export class LottoController {

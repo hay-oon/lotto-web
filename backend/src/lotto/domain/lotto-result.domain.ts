@@ -1,7 +1,7 @@
-import { LottoTicket } from './lotto-ticket.entity';
-import { WinningNumber } from './winning-number.entity';
+import { LottoTicket } from './lotto-ticket.domain';
+import { WinningNumber } from './winning-number.domain';
 import { Rank, RankHelper } from './rank.enum';
-import { Lotto } from './lotto.entity';
+import { Lotto } from './lotto.domain';
 
 export class LottoResult {
   private readonly rankCountMap: Map<Rank, number>;

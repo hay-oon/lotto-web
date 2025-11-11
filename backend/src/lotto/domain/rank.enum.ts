@@ -22,8 +22,8 @@ export const RANK_CONFIG: Record<Rank, RankConfig> = {
   [Rank.NONE]: { matchCount: 0, prize: 0, hasBonus: false },
 };
 
-export class RankHelper {
-  static from(matchCount: number, hasBonus: boolean): Rank {
+export namespace Rank {
+  export function from(matchCount: number, hasBonus: boolean): Rank {
     if (matchCount === 6) {
       return Rank.FIRST;
     }
@@ -42,16 +42,15 @@ export class RankHelper {
     return Rank.NONE;
   }
 
-  static getMatchCount(rank: Rank): number {
+  export function getMatchCount(rank: Rank): number {
     return RANK_CONFIG[rank].matchCount;
   }
 
-  static getPrize(rank: Rank): number {
+  export function getPrize(rank: Rank): number {
     return RANK_CONFIG[rank].prize;
   }
 
-  static hasBonus(rank: Rank): boolean {
+  export function hasBonus(rank: Rank): boolean {
     return RANK_CONFIG[rank].hasBonus;
   }
 }
-

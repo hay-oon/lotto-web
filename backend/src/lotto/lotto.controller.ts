@@ -14,7 +14,7 @@ import {
   CheckWinningResponseDto,
   RankCountDto,
 } from './dto/lotto-response.dto';
-import { Rank, RankHelper } from './domain/rank.enum';
+import { Rank } from './domain/rank.enum';
 import { LottoTicket } from './domain/lotto-ticket.domain';
 import { Lotto } from './domain/lotto.domain';
 
@@ -58,7 +58,7 @@ export class LottoController {
     const rankCounts: RankCountDto[] = Object.values(Rank).map((rank) => ({
       rank,
       count: result.getRankCount(rank),
-      prize: RankHelper.getPrize(rank),
+      prize: Rank.getPrize(rank),
     }));
 
     return {

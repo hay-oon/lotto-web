@@ -1,6 +1,6 @@
 import { LottoTicket } from './lotto-ticket.domain';
 import { WinningNumber } from './winning-number.domain';
-import { Rank, RankHelper } from './rank.enum';
+import { Rank } from './rank.enum';
 import { Lotto } from './lotto.domain';
 
 export class LottoResult {
@@ -23,7 +23,7 @@ export class LottoResult {
       );
       const hasBonus = LottoResult.hasBonusNumber(lotto, winningNumber);
 
-      const rank = RankHelper.from(matchCount, hasBonus);
+      const rank = Rank.from(matchCount, hasBonus);
       rankCountMap.set(rank, (rankCountMap.get(rank) || 0) + 1);
     }
 
@@ -64,7 +64,7 @@ export class LottoResult {
   getTotalPrize(): number {
     let totalPrize = 0;
     this.rankCountMap.forEach((count, rank) => {
-      totalPrize += RankHelper.getPrize(rank) * count;
+      totalPrize += Rank.getPrize(rank) * count;
     });
     return totalPrize;
   }

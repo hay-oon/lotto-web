@@ -90,6 +90,7 @@ cd ../frontend && npm install
 ### 2. 환경변수 설정
 
 **Backend** (backend/.env):
+
 ```
 PORT=3001
 DB_TYPE=sqlite
@@ -97,6 +98,7 @@ DB_DATABASE=lotto.db
 ```
 
 **Frontend** (frontend/.env.local):
+
 ```
 NEXT_PUBLIC_API_URL=http://localhost:3001
 ```
@@ -104,6 +106,7 @@ NEXT_PUBLIC_API_URL=http://localhost:3001
 ### 3. 실행
 
 **개별 실행:**
+
 ```bash
 # 백엔드 실행 (포트 3001)
 cd backend && npm run start:dev
@@ -113,6 +116,7 @@ cd frontend && npm run dev
 ```
 
 **동시 실행 (루트에서):**
+
 ```bash
 npm run dev
 ```
@@ -125,9 +129,11 @@ npm run dev
 ## API 엔드포인트
 
 ### POST /lotto/purchase
+
 로또 구매
 
 **Request:**
+
 ```json
 {
   "purchaseAmount": 8000
@@ -135,30 +141,30 @@ npm run dev
 ```
 
 **Response:**
+
 ```json
 {
   "purchaseCount": 8,
-  "lottos": [
-    { "numbers": [1, 2, 3, 4, 5, 6] }
-  ]
+  "lottos": [{ "numbers": [1, 2, 3, 4, 5, 6] }]
 }
 ```
 
 ### POST /lotto/check
+
 당첨 확인
 
 **Request:**
+
 ```json
 {
   "winningNumbers": [1, 2, 3, 4, 5, 6],
   "bonusNumber": 7,
-  "lottos": [
-    { "numbers": [1, 2, 3, 4, 5, 6] }
-  ]
+  "lottos": [{ "numbers": [1, 2, 3, 4, 5, 6] }]
 }
 ```
 
 **Response:**
+
 ```json
 {
   "rankCounts": [

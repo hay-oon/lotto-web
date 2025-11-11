@@ -1,34 +1,37 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
+import { useState } from "react";
 
 interface PurchaseFormProps {
   onPurchase: (amount: number) => void;
   isLoading: boolean;
 }
 
-export default function PurchaseForm({ onPurchase, isLoading }: PurchaseFormProps) {
-  const [amount, setAmount] = useState('');
-  const [error, setError] = useState('');
+export default function PurchaseForm({
+  onPurchase,
+  isLoading,
+}: PurchaseFormProps) {
+  const [amount, setAmount] = useState("");
+  const [error, setError] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setError('');
+    setError("");
 
     const purchaseAmount = parseInt(amount);
 
     if (isNaN(purchaseAmount)) {
-      setError('숫자를 입력해주세요.');
+      setError("숫자를 입력해주세요.");
       return;
     }
 
     if (purchaseAmount < 1000) {
-      setError('구입 금액은 최소 1,000원 이상이어야 합니다.');
+      setError("구입 금액은 최소 1,000원 이상이어야 합니다.");
       return;
     }
 
     if (purchaseAmount % 1000 !== 0) {
-      setError('구입 금액은 1,000원 단위여야 합니다.');
+      setError("구입 금액은 1,000원 단위여야 합니다.");
       return;
     }
 
@@ -60,10 +63,9 @@ export default function PurchaseForm({ onPurchase, isLoading }: PurchaseFormProp
           disabled={isLoading}
           className="w-full bg-blue-600 text-white py-2 px-4 rounded-lg hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition"
         >
-          {isLoading ? '구매 중...' : '구매하기'}
+          {isLoading ? "구매 중..." : "구매하기"}
         </button>
       </form>
     </div>
   );
 }
-

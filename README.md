@@ -47,13 +47,128 @@
 
 ```bash
 lotto-web/
-├── frontend/       # Next.js 클라이언트
-│   └── src/
+├── frontend/               # Next.js 클라이언트
+│   ├── app/               # Next.js App Router
+│   ├── components/        # React 컴포넌트
+│   ├── lib/              # API 클라이언트
+│   ├── types/            # TypeScript 타입 정의
+│   └── package.json
 │
-├── backend/        # Nest.js 서버
-│   └── src/
+├── backend/              # NestJS 서버
+│   ├── src/
+│   │   ├── lotto/       # Lotto 모듈
+│   │   │   ├── domain/  # 도메인 엔티티
+│   │   │   ├── dto/     # 데이터 전송 객체
+│   │   │   ├── util/    # 유틸리티
+│   │   │   ├── lotto.controller.ts
+│   │   │   ├── lotto.service.ts
+│   │   │   └── lotto.module.ts
+│   │   ├── app.module.ts
+│   │   └── main.ts
+│   └── package.json
 │
 ├── docker-compose.yml
 ├── .gitignore
-└── package.json     # root workspace
+└── package.json          # root workspace
+```
+
+## Quick Start
+
+### 1. 의존성 설치
+
+```bash
+# 루트 디렉토리에서
+npm install
+
+# 백엔드 의존성 설치
+cd backend && npm install
+
+# 프론트엔드 의존성 설치
+cd ../frontend && npm install
+```
+
+### 2. 환경변수 설정
+
+**Backend** (backend/.env):
+```
+PORT=3001
+DB_TYPE=sqlite
+DB_DATABASE=lotto.db
+```
+
+**Frontend** (frontend/.env.local):
+```
+NEXT_PUBLIC_API_URL=http://localhost:3001
+```
+
+### 3. 실행
+
+**개별 실행:**
+```bash
+# 백엔드 실행 (포트 3001)
+cd backend && npm run start:dev
+
+# 프론트엔드 실행 (포트 3000)
+cd frontend && npm run dev
+```
+
+**동시 실행 (루트에서):**
+```bash
+npm run dev
+```
+
+### 4. 접속
+
+- 프론트엔드: http://localhost:3000
+- 백엔드 API: http://localhost:3001
+
+## API 엔드포인트
+
+### POST /lotto/purchase
+로또 구매
+
+**Request:**
+```json
+{
+  "purchaseAmount": 8000
+}
+```
+
+**Response:**
+```json
+{
+  "purchaseCount": 8,
+  "lottos": [
+    { "numbers": [1, 2, 3, 4, 5, 6] }
+  ]
+}
+```
+
+### POST /lotto/check
+당첨 확인
+
+**Request:**
+```json
+{
+  "winningNumbers": [1, 2, 3, 4, 5, 6],
+  "bonusNumber": 7,
+  "lottos": [
+    { "numbers": [1, 2, 3, 4, 5, 6] }
+  ]
+}
+```
+
+**Response:**
+```json
+{
+  "rankCounts": [
+    {
+      "rank": "FIRST",
+      "count": 1,
+      "prize": 2000000000
+    }
+  ],
+  "totalPrize": 2000000000,
+  "earningRate": 250000.0
+}
 ```
